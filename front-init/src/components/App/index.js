@@ -17,11 +17,16 @@ import RegistrationForm from '../Header/RegistrationForm';
 import LogInForm from '../Header/LogInForm';
 import Footer from '../Footer';
 import AdminForm from '../AdminForm';
+import Pagination from '../Pagination'
 
 // == Composant
 export default function App() {
 
   const [jobs, setJobs] = useState([]);
+
+  // PAGINATION - States
+  const [currentPage, setCurrentPage] = useState(1)
+  const [jobsPerPage] = useState(10);
 
   useEffect(() => {
 
@@ -31,7 +36,7 @@ export default function App() {
       return data.json();
     })
     .then(data => {
-      data = data.slice(0, 50)
+      // data = data.slice(0, 50)
       // console.log(data);
       setJobs(data)
     })
@@ -40,13 +45,22 @@ export default function App() {
     })
   }, [])
 
+  // PAGINATION - Get current jobs
+  const indexOfLastJob = currentPage * jobsPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
+
+  // PAGINATION - Chnage page
+  const paginate = pageNumber => setCurrentPage(pageNumber)
+
   return (
     <ChakraProvider>
               <div className="app">
         <Switch>
           <Route exact path="/">
             <Header />
-            <Search jobs={jobs} />
+            <Search jobs={currentJobs} />
+            <Pagination jobsPerPage={jobsPerPage} totalJobs={jobs.length} paginate={paginate} />
             <Footer />
           </Route>
           <Route path="/register">
