@@ -1,8 +1,4 @@
 const fetch = require('node-fetch');
-// When requesting the access token, node-fetch seems to have trouble with the API's header request 
-// of 'Content-Type': 'application/x-www-form-urlencoded'.
-// The call sends no token, even though the response status is 200.
-// We therefore started using axios too.
 const axios = require('axios');
 const qs = require('qs');
 
@@ -11,9 +7,8 @@ const discordController = {
     fetchDiscord: async (_, response) => {
 
         try {
-
             const data = qs.stringify({
-                'grant_type': 'client_credentials',
+                // 'grant_type': 'client_credentials',
                 'client_id': process.env.CLIENT_ID_DISCORD,
                 'client_secret': process.env.CLIENT_SECRET_DISCORD,
                 'scope': 'application_PAR_jobboard_bbd66325e3c090fee72f14d54ccb6bc6fe98dd16eb100d9840ac47bb35c0adef api_offresdemploiv2 o2dsoffre'
