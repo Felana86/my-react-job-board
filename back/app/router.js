@@ -4,7 +4,7 @@ const { Router } = require('express');
 const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
 const poleemploiController = require('./controllers/poleemploiController');
-const discordController = require('./controllers/discordController');
+const discordController = require('./Discord/discordController');
 
 // Schemas
 const jobSchema = require('./schemas/job');

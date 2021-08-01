@@ -75,4 +75,4 @@ authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZX
 
 # DISCORD
 ### Discord Bot commands and events
-POST  http://localhost:5050/discord
+POST http://localhost:5050/discord
