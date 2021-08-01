@@ -71,3 +71,8 @@ Content-type: application/json
 ### Find one user and delete
 DELETE http://localhost:5050/users/delete/8
 authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImZlbGFuYUBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1OTU0MTcsImV4cCI6MTYyNzY4MTgxN30.flQRjZW3L0Sebc-EYCeU5fV28J12iU-us9lGPxuGCHI
+
+
+# DISCORD
+### Discord Bot commands and events
+POST  http://localhost:5050/discord

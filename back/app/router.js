@@ -4,6 +4,7 @@ const { Router } = require('express');
 const jobController = require('./controllers/jobController');
 const userController = require('./controllers/userController');
 const poleemploiController = require('./controllers/poleemploiController');
+const discordController = require('./controllers/discordController');
 
 // Schemas
 const jobSchema = require('./schemas/job');
@@ -225,6 +226,23 @@ router.post('/users/loginUser', userController.isLogin);
 * @returns {string} 500 - An error message
 */
 router.delete('/users/delete/:id(\\d+)', authorizationAdmin, userController.deleteOneUser);
+
+// ROUTE TO DISCORD BOT
+
+/**
+* Responds with Discord Bot commands and events
+* @name /discord
+* @group Jobboard
+* @route GET 
+* @returns {Array<Jobs>} 200 - An array of messages and events
+* @returns {string} 500 - An error message
+* @route POST 
+* @returns {Array<Jobs>} 200 - An array of messages and events
+* @returns {string} 500 - An error message
+*/
+router.route('/discord')
+      .get(discordController.fetchDiscordBot)
+      .post(discordController.fetchDiscordBot);
 
 router.use((request, response) => response.status(404).json(`Endpoint ${request.url} not found`));
 
