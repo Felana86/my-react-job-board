@@ -2,7 +2,7 @@ const options = {
     swaggerDefinition: {
         info: {
             description: 'A job board API REST',
-            title: 'JobBoard',
+            title: 'Job Board - react-jobs.fr',
             version: '1.0.0'
         },
         host: `localhost:${process.env.PORT}`,
