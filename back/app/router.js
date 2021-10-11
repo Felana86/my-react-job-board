@@ -151,7 +151,7 @@ router.delete('/jobs/delete/:id(\\d+)', authorizationAdmin, jobController.delete
 
 /**
 * Adds a new user in database/ user registration
-* @route POST /users/register
+* @route POST /users/registerUser
 * @group Jobboard
 * @param {UserPost.model} object.body.required User object to add to database
 * @returns {User.model} 201 - The newly created user
