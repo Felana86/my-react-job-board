@@ -25,53 +25,6 @@ class User {
         }
     }
 
-    // We are not sure yet to need this method
-    // /**
-    // * Retrieves all users from database
-    // * @static
-    // * @async
-    // * @returns {Array<User>} all users in database
-    // * @throws {Error} an error object
-    // */
-    // static async findAll() {
-    //     try {
-    //         //console.log(rows);
-    //         const {rows} = await database.query('SELECT * FROM "user"');
-    //         return rows.map(row => new User(row));
-    //     } catch (error) {
-    //         if (error.detail) {
-    //             throw new Error(error.detail);
-    //         } else {
-    //             throw error;
-    //         }
-    //     }
-    // }
-
-    // We are not sure yet to need this method
-    // /**
-    // * Retrieves one user from database
-    // * @static
-    // * @async
-    // * @param {number} id 
-    // * @returns {User} the instance identified with its id
-    // * @throws {Error} an error object
-    // */
-    // static async findOneById(id) {
-    //     try {
-    //         const {rows} = await database.query('SELECT * FROM "user" WHERE id =$1  ', [id]);
-    //         if (rows[0]) {
-    //             return new User(rows[0]);
-    //         } else {
-    //             throw new UserError(id);
-    //         }
-    //     } catch (error) {
-    //         if (error.detail) {
-    //             throw new Error(error.detail);
-    //         } else {
-    //             throw error;
-    //         }
-    //     }
-    // }
 
     /**
     * Finds one user by his/her email in database

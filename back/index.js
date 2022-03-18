@@ -33,10 +33,7 @@ app.use(express.urlencoded({
 
 app.options('*', cors());
 
-// potential static route
-//app.use(express.static('public'));
 
-//app.use(authAdminMiddleware);
 
 // Orientating all routes towards router
 app.use(router);

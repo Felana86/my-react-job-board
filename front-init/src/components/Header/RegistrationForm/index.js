@@ -80,7 +80,7 @@ export default function RegistrationForm() {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Box align="center" justifyContent="center" display="flex">
-          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="👩🏻‍💻" /></Heading>
+          <Heading display="flex" fontSize="4xl">Inscription <Twemoji display="flex" onlyEmojiClassName="twemoji" displayFlex="flex" text="👩🏻‍💻" /></Heading>
         </Box>
         <Box
           rounded="lg"

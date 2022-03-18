@@ -6,14 +6,14 @@ import { BrowserRouter } from 'react-router-dom';
 import App from 'src/components/App';
 
 // == Render
-// Élément React racine (celui qui contient l'ensemble de l'app)
-// => crée une structure d'objets imbriqués (DOM virtuel)
+// Root React element (the one that contains the whole app)
+// => creates a structures of nested objects
 const rootReactElement = (
   <BrowserRouter>
     <App />
   </BrowserRouter>
 );
-// La cible du DOM (là où la structure doit prendre vie dans le DOM)
+// The DOM target (where the structure should come to life in the DOM)
 const target = document.getElementById('root');
-// Déclenchement du rendu de React (virtuel) => DOM (page web)
+//React rendering trigger (virtual) => DOM (web page)
 render(rootReactElement, target);

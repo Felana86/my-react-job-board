@@ -23,7 +23,8 @@ import TaglineBlock from '../Header/TaglineBlock';
 import Page404 from '../Page404';
 >
 
-// == Création du composant App
+// == Creating the App component
+
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [jobs, setJobs] = useState([]);

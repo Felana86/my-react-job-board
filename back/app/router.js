@@ -58,18 +58,7 @@ router.route('/jobs/pe/')
 */
 router.get('/jobs', jobController.findAllJobs);
 
-// We are not sure yet to need this route as we might choose to handle 
-// showing details of one job with a toggle, meaning without changing the page 
-// /**
-// * Responds with one job in database
-// * @route GET /jobs/{id}
-// * @group Jobboard
-// * @param {number} id.path.required The id of the job to fetch
-// * @returns {Job.model} 200 - A single job identified by its id
-// * @returns {string} 404 - An error message
-// * @returns {string} 500 - An error message
-// */
-// router.get('/jobs/:id(\\d+)', jobController.findOneJob);
+
 
 /**
 * @typedef JobPost
@@ -118,28 +107,6 @@ router.delete('/jobs/delete/:id(\\d+)', authorizationAdmin, jobController.delete
 
 //ROUTES RELATED TO USER
 
-// We are not sure yet to need that route
-// /**
-// * Responds with all users in database if Admin
-// * @route GET /users
-// * @group Jobboard
-// * @returns {Array<User>} 200 - An array of users
-// * @returns {string} 500 - An error message
-// */
-// router.get('/users',  authorizationAdmin, userController.getAllUser);
-
-// We are not sure yet to need this route
-// /**
-// * Responds with one user in database
-// * @route GET /users/{id}
-// * @group Jobboard
-// * @param {number} id.path.required The id of the user to fetch
-// * @returns {User.model} 200 - One user identified by his/her id
-// * @returns {string} 404 - An error message
-// * @returns {string} 500 - An error message
-// */
-// router.get('/users/:id(\\d+)', authorizationAdmin, userController.getOneUser);
-
 /**
 * @typedef UserPost
 * @property {number} id
@@ -160,15 +127,8 @@ router.delete('/jobs/delete/:id(\\d+)', authorizationAdmin, jobController.delete
 */
 router.post('/users/registerUser', validateBody(userSchema), userController.isRegister);
 
-// // SE RAJOUTER UN COMPTE ADMIN NOUS-MEME VIA LE FORMULAIRE DE LOGIN
-// /**
-// * Adds a new Admin in database
-// * @route POST /users/register
-// * @group Jobboard
-// * @param {UserPost.model} object.body.required User object to add to database
-// * @returns {User.model} 201 - The newly created Admin* @returns {String} 500 - An error message
-// */
-// router.post('/users/registerAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isRegister);
+
+
 
 /**
 * Finds a user in database / user login
@@ -180,41 +140,7 @@ router.post('/users/registerUser', validateBody(userSchema), userController.isRe
 */
 router.post('/users/loginUser', userController.isLogin);
 
-// This route likely is superfluous for now
-// /**
-// * Connect an ADMIN in database
-// * @route POST /user/login
-// * @group Jobboard
-// * @param {UserPost.model} object.body.required User object to connect to database
-// * @returns {User.model} 201 - The newly connected Admin
-// * @returns {string} 500 - An error message
-// */
-// router.post('/user/loginAdmin', /*authorizationAdmin,*/ validateBody(userSchema), userController.isLogin);
 
-// We are not sure yet to need this route
-// /**
-// * Updates a user in database
-// * @route PATCH /users/update
-// * @group Jobboard
-// * @param {User.model} object.body.required User object to update in database
-// * @returns {*} 204 - User has been updated
-// * @returns {string} 500 - An error message
-// */
-// router.patch('/users/update', authorizationUser, validateBody(userSchema), userController.addUser);
-// // SI BESOIN DE RAJOUTER UNE ROUTE POUR LES ADMIN pour modifier les info user
-// router.patch('/users/update', authorizationAdmin, validateBody(userSchema), userController.addUser);
-
-// We are not sure yet to need this route
-// /**
-// * Finds and deletes a user in database
-// * @route DELETE /user/delete/{id}
-// * @group Jobboard
-// * @param {number} id.path.required The id of the job to delete
-// * @returns {*} 204 - User has been deleted
-// * @returns {string} 404 - An error message
-// * @returns {string} 500 - An error message
-// */
-// router.delete('/user/delete/:id(\\d+)', userController.deleteOneUser);
 
 /**
 * Finds and deletes a user in database, only with admin access rights
@@ -250,6 +176,3 @@ module.exports = router;
 
 
 
-// suite au login, pour l'arrivée sur la "page de profil", il faudra une route user et admin de plus:
-// un router pour les visiteurs connectées
-// un router pour les admins
