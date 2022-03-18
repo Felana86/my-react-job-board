@@ -27,7 +27,9 @@ const jobController = {
     // },
 
     addJob: async (request, response) => {
+        
         try {
+            
             const job = new Job(request.body);
             const newJob = await job.save();
 

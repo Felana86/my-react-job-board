@@ -1,10 +1,6 @@
 const database = require('../database');
 
-class UserError extends Error {
-    constructor(id) {
-        super(`No user found with id ${id}`);
-    }
-};
+
 
 /**
 * @typedef User
@@ -22,7 +18,6 @@ class User {
     // to test the class of an error in the controller without having to 
     // import the class of the error
 
-    static UserError = UserError;
 
     constructor(data={}) {
         for (const prop in data) {
@@ -88,7 +83,7 @@ class User {
     */
     static async findOneByEmail(email) {
         try {
-            const {rows} = await database.query('SELECT * FROM "user" WHERE email=$1  ', [email]);
+            const {rows} = await database.query('SELECT * FROM "user" WHERE email=$1 ', [email]);
             if (rows[0]) {
                 return new User(rows[0]);
             }
@@ -112,10 +107,13 @@ class User {
             if (this.id) {
                 await database.query('SELECT update_user($1)', [this]);
             } else {
+console.log("this", this);
                 //it is important to name the result here, else wise 
                 //postgre will do it automatically and we won't be able 
                 //to guess
-                const {rows} = await database.query('SELECT id FROM add_user($1)', [this]);
+
+                 const {rows} = await database.query('INSERT INTO "user"(firstname,lastname,  email, password,role) VALUES ($1, $2, $3, $4, $5) RETURNING * ', [this.firstname, this.lastname, this.email, this.password, this.role]);
+
                 this.id = rows[0].id;
                 return this;
             }

@@ -1,0 +1,12 @@
+.twemoji {
+  float: right;
+  display: flex;
+  flex-direction: row;
+  margin-left: 3px;
+}
+
+@media (max-width:629px) {
+  .twemoji {
+    display: none;
+  }
+}

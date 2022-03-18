@@ -5,6 +5,7 @@ require('dotenv').config();
 module.exports = function (request, response, next) {
         // console.log(request.headers)
     try {
+        
         // Stock the token we received from header authorization
         const token = request.headers.authorization.split(" ")[1];
         // console.log(token);

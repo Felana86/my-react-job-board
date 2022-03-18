@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 import axios from 'axios';
-// import { withRouter } from "react-router-dom";
 
+import { Twemoji } from 'react-emoji-render';
 import {
   Flex,
   Box,
   FormControl,
   FormLabel,
-  Link,
   Input,
   Stack,
   Button,
   Heading,
   useColorModeValue,
+  Textarea,
 } from '@chakra-ui/react';
 
-export default function AdminForm(props) {
-
+export default function AdminForm({isAdmin}) {
+  const history = useHistory();
   const [state, setState] = useState({
     title: '',
     technology: '',
@@ -26,6 +27,8 @@ export default function AdminForm(props) {
     contract: '',
     salary: '',
     description: '',
+    url: '',
+    user_id: isAdmin
   });
 
   const handleChange = (e) => {
@@ -37,8 +40,6 @@ export default function AdminForm(props) {
   };
 
   const sendDetailsToServer = () => {
-    // if (state.email.length && state.password.length) {
-      // props.showError(null);
       const payload = {
         "title" : state.title,
         "technology" : state.technology,
@@ -47,45 +48,46 @@ export default function AdminForm(props) {
         "contract" : state.contract,
         "salary" : state.salary,
         "description" : state.description,
+        "url" : state.url,
+        'user_id': localStorage.getItem('USER_ID'),
       };
       
-     axios.post('http://localhost:5050/jobs/save', payload)
-        .then((response) => {
-          if (response.status === 200) {
-            setState((prevState) => ({
-              ...prevState,
-              // successMessage: 'Registration successful. Redirecting to home page..',
-            }));
-            redirectToHome();
-            console.log(response)
-            // props.showError(null);
-          } else {
-          // props.showError("Some error ocurred");
-      }})
-  .catch((error) => {
-      console.log(error.response);
-  });
+     axios.post('http://18.212.203.228:5050/jobs/save', payload,
+     {headers: {
+       'Authorization':`Bearer ${localStorage.getItem('USER_TOKEN')}`,
+     }}
+     )
+       .then((response) => {
+         redirectToHome();
+         if (response.status === 200) {
+           setState((prevState) => ({
+             ...prevState,
+           }));
+           console.log(response)
+           // props.showError(null);
+         } else {
+           // props.showError("Erreur");
+         }
+       })
+       .catch((error) => {
+         console.log(error.response);
+       });
  }
-
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
-    console.log(state);
-    // if (state.password === state.confirmPassword) {
+    // console.log(state);
       sendDetailsToServer();
-    // }
-    // else {
-      // props.showError('Passwords do not match');
-    // }
   };
 
   const redirectToHome = () => {
-    props.history.push('/');
+    console.log(history)
+    history.push('/');
   };
-  const redirectToLogin = () => {
-    props.history.push('/login');
-  };
-  // title, description, company, technology, locality, contract, salary
+    // const redirectToLogin = () => {
+    // history.push('/login');
+    // };
+
   return (
     <Flex
       align="center"
@@ -95,7 +97,7 @@ export default function AdminForm(props) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Stack align="center">
-          <Heading fontSize="4xl">Ajouter une offre 🐱‍💻</Heading>
+          <Heading fontSize="4xl">Ajouter une offre <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="📝" /></Heading>
         </Stack>
         <Box
           rounded="lg"
@@ -104,7 +106,7 @@ export default function AdminForm(props) {
           p={8}
         >
           <Stack spacing={4}>
-          <FormControl id="title">
+            <FormControl id="title">
               <FormLabel>Titre de l'offre</FormLabel>
               <Input
                 type="text"
@@ -153,7 +155,7 @@ export default function AdminForm(props) {
                 onChange={handleChange}
               />
             </FormControl>
-           
+
             <FormControl id="salary">
               <FormLabel>Salaire</FormLabel>
               <Input
@@ -163,12 +165,21 @@ export default function AdminForm(props) {
                 onChange={handleChange}
               />
             </FormControl>
+
             <FormControl id="description">
               <FormLabel>Description de l'offre</FormLabel>
-              <Input
-                type="text"
+              <Textarea type="text"
                 id="description"
                 value={state.description}
+                onChange={handleChange}
+              />
+            </FormControl>
+
+            <FormControl id="url">
+              <FormLabel>URL de l'offre</FormLabel>
+              <Input type="text"
+                id="url"
+                value={state.url}
                 onChange={handleChange}
               />
             </FormControl>
@@ -180,7 +191,7 @@ export default function AdminForm(props) {
               >
               </Stack>
               <Button
-                color="blue.500"
+                color="#0468ae"
                 onClick={handleSubmitClick}
               >
                 Publier
@@ -192,16 +203,3 @@ export default function AdminForm(props) {
     </Flex>
   );
 }
-
-/* <div className="alert alert-success mt-2" style={{ display: state.successMessage ? 'block' : 'none' }} role="alert">
-        {state.successMessage}
-      </div>
-      <div className="mt-2">
-        <span>Already have an account? </span>
-        <span className="loginText" onClick={() => redirectToLogin()}>Login here</span>
-      </div>
-    </div>
-  );
-} */
-
-// export default withRouter(RegistrationForm);

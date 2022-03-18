@@ -60,12 +60,12 @@ Content-Type: application/json
 }
 
 ### Find one user/ user login 
-POST  http://localhost:5050/users/loginUser
+POST  http://18.212.203.228:5050/users/loginUser
 Content-type: application/json
 
 {    
-      "email": "felana@oclock.io",
-      "password": "Felana"
+     "email": "marie@oclock.io",
+     "password": "marieclaire"
 }
 
 ### Find one user and delete

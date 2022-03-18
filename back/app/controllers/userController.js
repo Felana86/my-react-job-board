@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const userController = {
 
     isRegister: async (request, response) => {
-
+     console.log(request.body, "je suis là"); 
         try {
             // User input from front-end (body): email and password
             const { email, password } = request.body;
@@ -28,15 +28,15 @@ const userController = {
             // Create user in database
             const newUser = new User({
 
-                firstName: request.body.firstname.toString().toLowerCase(),
-                lastName: request.body.lastname.toString().toLowerCase(),
+                firstname: request.body.firstname.toString().toLowerCase(),
+                lastname: request.body.lastname.toString().toLowerCase(),
                 email: request.body.email.toString().toLowerCase(),
                 password: encryptedPassword,
                 role: "user" /* once we have different user types (e.g. candidate and recruter) 
                 and a front-end admin profile with a fonctionnality to create other user types as well as 
                 users with admin rights, we will handle role creation dynamically */
 
-            });
+            });console.log("newUser", newUser);
             const insert =  await newUser.save();
             // console.log(insert);
             response.status(201).send(insert);
