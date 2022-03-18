@@ -30,7 +30,7 @@ export default function Footer() {
         <Link href="https://discord.gg/jR3f6Uwm" isExternal>
           <Icon as={FaDiscord} w={5} h={5} />
         </Link>   
-       
+        
         <Link href="https://twitter.com/react_jobs_fr" isExternal>
           <Icon as={FaTwitter} w={5} h={5} />
         </Link>
