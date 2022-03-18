@@ -1,33 +1,28 @@
 const jwt = require('jsonwebtoken');
-//console.log(jwt);
+
 require('dotenv').config();
 
 module.exports = function (request, response, next) {
-    
+        // console.log(request.headers)
     try {
-
         
-        // Stock the token we recieved from the header authorization
-        const token = request.header("Authorization");
-        
-        // Verify if the token is valid
+        // Stock the token we received from header authorization
+        const token = request.headers.authorization.split(" ")[1];
+        // console.log(token);
+        // If token is not valid
         if (!token) {
-            response.status(403).json("Acces  Admin denied");
+            return response.status(403).json("Admin access denied");
         }
-        // Verify if the token is valid
+        // If token is valid
         const verify = jwt.verify(token, process.env.TOKEN_KEY);
-        // Verify if the user is an Admin
+        // Verify if user has admin rights
         if (verify.isAdmin === false || verify.isAdmin === null ) {
-            return response.status(401).json("Vous n'avez pas les droits d'accès");
+            return response.status(401).json("You don't have the right access rights");
         }
-
         request.user = verify;
-
         next();
-
     } catch (error) {
         console.error(error);
             response.status(403).json("Token invalid");
-
     }
 }

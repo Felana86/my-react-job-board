@@ -1,10 +1,15 @@
+// Using a connection pool to avoid PostgreSQL to pipeline and execute serially all queries 
+// among simultaneous requests 
 const {Pool} = require('pg');
 
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
-/*if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
     
     pool = new Pool({
 
@@ -15,6 +20,6 @@ const pool = new Pool({
             rejectUnauthorized: false
         }
     });
-}*/
+}
 
 module.exports = pool;

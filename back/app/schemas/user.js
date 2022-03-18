@@ -3,16 +3,15 @@ const Joi = require('joi');
 const schema = Joi.object({
     
     id: Joi.number().integer().optional(),
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
+    firstname: Joi.string().required(),
+    lastname: Joi.string().required(),
     email: Joi.string().email().required(),
     password: Joi.string().required(),
-    // role: Joi.string().required()//default user
-    //token: [Joi.string(),Joi.number()]
+    role: Joi.string().description("user")
 
-    role: Joi.string().required()//default user
-    
 });
 
 
 module.exports = schema; 
+
+

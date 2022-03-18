@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
-// import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { Link as ReactLink } from 'react-router-dom';
 
 import axios from 'axios';
+
+import { Twemoji } from 'react-emoji-render';
 import {
   Flex,
   Box,
@@ -9,19 +12,20 @@ import {
   FormLabel,
   Input,
   Stack,
-  Link,
   Button,
   Heading,
   useColorModeValue,
+  Text,
+  Link,
 } from '@chakra-ui/react';
 
-export default function LogInForm(props) {
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [isLogged, setIsLogged] = useState(false)
+export default function LogInForm({ handleIsLoggedIn, handleIsAdmin }) {
+  const history = useHistory();
+  // const [isAdmin, setIsAdmin] = useState(false)
+  // const [isLogged, setIsLogged] = useState(false)
   const [state, setState] = useState({
     email: '',
     password: '',
-    // successMessage: null,
   });
 
   const handleChange = (e) => {
@@ -36,37 +40,30 @@ export default function LogInForm(props) {
     e.preventDefault();
     console.log(state);
     const payload = {
-      "email" : state.email,
-      "password" : state.password,
+      "email": state.email,
+      "password": state.password,
     };
-    axios.post("http://localhost:5050/user/loginUser", payload)
-     .then((response) => {
+    axios.post("http://18.212.203.228:5050/users/loginUser", payload)
+      .then((response) => {
         if (response.status === 200) {
           const { user, token } = response.data
-          
-          if (user.token) {
-            setIsLogged(true)
-          }
+          // console.log("c'est le rôle", user.role);
 
-          if (user.role === "admin") {
-            setIsAdmin(true)
-          }
+          handleIsLoggedIn(true)
 
-          localStorage.setItem("token", token);
+          if (user.role == "admin") {
+            // console.log("c'est le rôle", user.role, user.id);
+            handleIsAdmin(true)
+          }
+          localStorage.setItem("USER_TOKEN", response.data.token);
           localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("USER_ID", user.id);
 
-          console.log(response)
           setState((prevState) => ({
             ...prevState,
-            // successMessage: 'Connexion réussi.',
           }));
 
-          if (isAdmin) {
-          redirectToDashboard() }
-
-          else { 
-          redirectToHome() }
-          // props.showError(null);
+          redirectToHome();
         }
         else if (response.code === 204) {
           // props.showError("Le nom d'utilisateur et le mot de passe ne correspondent pas");
@@ -76,43 +73,28 @@ export default function LogInForm(props) {
         }
       })
       .catch((error) => {
+        handleIsLoggedIn(false);
+        handleIsAdmin(false);
         console.log(error);
       });
   };
 
- /* .then((response)) => {
-   const user = response.user
-   if (user.role.includes("Admin"))
-   redirectToDashboard() }
-
-  1. si le rôle de l'user est "Admin", rediriger vers "/admin" avec la vue 
-  2. redirection vers admin via react-router
-  3. envoi d'une offre via formulaire
-
-  A voir : 
-  1. comment garder le token et aussi comment réaliser un logout.
-  2. S'assurer que la route n'est pas accessible en tapant l'url avec /admin
- } 
- */
-
-
-  const redirectToHome = (props) => {
-    // props.updateTitle('Accueil');
-    console.log(props)
-    props.history.push('/');
+  const redirectToHome = () => {
+    // console.log(history)
+    history.push('/');
   };
 
   return (
     <Flex
       align="center"
       justify="center"
-      height="100%"
+      height="75vh"
       bg={useColorModeValue('gray.50', 'gray.800')}
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
-        <Stack align="center">
-          <Heading fontSize="4xl">Connexion ✌️</Heading>
-        </Stack>
+        <Box justifyContent="center" display="flex" >
+          <Heading display="flex" fontSize="4xl">Connexion <Twemoji className="twemoji" display="flex" text="✌️" /></Heading>
+        </Box>
         <Box
           rounded="lg"
           bg={useColorModeValue('white', 'gray.700')}
@@ -145,14 +127,16 @@ export default function LogInForm(props) {
                 align="start"
                 justify="space-between"
               >
-                <Link
-                  href="/register"
-                  color="blue.500"
-                >Pas encore de compte ? Cliquez ici pour vous inscrire
+                <Link as={ReactLink} to='/register'>
+                  <Text
+                    href="/register"
+                    color="#0468ae"
+                  >Pas encore de compte ? Cliquez ici pour vous inscrire
+                  </Text>
                 </Link>
               </Stack>
               <Button
-                color="blue.500"
+                color="#0468ae"
                 onClick={handleSubmitClick}
               >
                 Je me connecte
