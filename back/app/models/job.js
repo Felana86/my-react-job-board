@@ -50,32 +50,7 @@ class Job {
         }
     }
 
-    // We are not sure yet to need this method as we might choose to handle 
-    // showing details of one job with a toggle, meaning without changing the page 
-    // /**
-    // * Retrieves one job from database
-    // * @static
-    // * @async
-    // * @param {number} id 
-    // * @returns {Job} the instance identified with its id
-    // * @throws {Error} an error object
-    // */
-    // static async findOne(id) {
-    //     try {
-    //         const {rows} = await database.query('SELECT * FROM job WHERE id=$1', [id]);
-    //         if (rows[0]) {
-    //             return new Job(rows[0]);
-    //         } else {
-    //             throw new JobError(id);
-    //         }
-    //     } catch (error) {
-    //         if (error.detail) {
-    //             throw new Error(error.detail);
-    //         } else {
-    //             throw error;
-    //         }
-    //     }
-    // }
+
 
     /**
     * Adds or updates an instance of Job in database

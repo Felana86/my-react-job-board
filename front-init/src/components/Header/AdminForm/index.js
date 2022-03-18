@@ -52,27 +52,27 @@ export default function AdminForm({isAdmin}) {
         'user_id': localStorage.getItem('USER_ID'),
       };
       
-     axios.post('http://18.212.203.228:5050/jobs/save', payload,
-     {headers: {
-       'Authorization':`Bearer ${localStorage.getItem('USER_TOKEN')}`,
-     }}
-     )
-       .then((response) => {
-         redirectToHome();
-         if (response.status === 200) {
-           setState((prevState) => ({
-             ...prevState,
-           }));
-           console.log(response)
+      axios.post('http://18.212.203.228:5050/jobs/save', payload,
+      {headers: {
+        'Authorization':`Bearer ${localStorage.getItem('USER_TOKEN')}`,
+      }}
+      )
+        .then((response) => {
+          redirectToHome();
+          if (response.status === 200) {
+            setState((prevState) => ({
+              ...prevState,
+            }));
+            console.log(response)
            // props.showError(null);
-         } else {
+          } else {
            // props.showError("Erreur");
-         }
-       })
-       .catch((error) => {
-         console.log(error.response);
-       });
- }
+          }
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+  }
 
   const handleSubmitClick = (e) => {
     e.preventDefault();
@@ -97,7 +97,7 @@ export default function AdminForm({isAdmin}) {
     >
       <Stack spacing={8} mx="auto" maxW="lg" py={12} px={6}>
         <Stack align="center">
-          <Heading fontSize="4xl">Ajouter une offre <Twemoji display="flex" onlyEmojiClassName="twemoji" display="flex" text="📝" /></Heading>
+          <Heading fontSize="4xl">Ajouter une offre <Twemoji display="flex" onlyEmojiClassName="twemoji" displayFlex="flex" text="📝" /></Heading>
         </Stack>
         <Box
           rounded="lg"

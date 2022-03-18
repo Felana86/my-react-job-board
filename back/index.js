@@ -26,10 +26,7 @@ app.use(function(req, res, next) {
 
   next();
 });
-// dès qu'on veut utiliser une requète POST
 
-
-// dès qu'on veut utiliser une requète POST
 // All data sent as json in POST methods 
 app.use(express.json());
 // All, but POST route requesting access token to Pôle Emploi API, which is set to be in urlencoded
@@ -38,10 +35,6 @@ app.use(express.urlencoded({
 }));
 
 app.options('*', cors());
-// potential static route
-//app.use(express.static('public'));
-
-//app.use(authAdminMiddleware);
 
 // Orientating all routes towards router
 app.use(router);

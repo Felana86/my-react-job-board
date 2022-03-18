@@ -57,7 +57,7 @@ export default function About() {
           </Box>
           <Box
             w="0.5em"
-            w="100%"
+            h="100%"
             maxWidth="1200px"
             bg={useColorModeValue('gray.50', 'gray.800')}
             py={8}
