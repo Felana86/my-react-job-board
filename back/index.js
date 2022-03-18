@@ -1,29 +1,26 @@
 require('dotenv').config();
 const express = require('express');
 const router = require('./app/router');
-//const swaggerConfig = require('./app/services/swagger.js');
+// Swagger options can be found in './app/services/swagger.js'
+const swaggerConfig = require('./app/services/swagger.js');
 // Managing Cross-origin ressource sharing with node.js package CORS
 const cors = require('cors');
 
 const app = express();
-// API documentation with Swagger 
 
-//const expressSwagger = require('express-swagger-generator')(app);
 const PORT = process.env.PORT || 1234;
 
 
-// API documentation with Swagger 
-//const expressSwagger = require('express-swagger-generator')(app);
-//expressSwagger(swaggerConfig);
-//const swaggerConfig = require('./app/middlewares/swagger.js');
+// API documentation with node.js package express-swagger-generator 
+const expressSwagger = require('express-swagger-generator')(app);
+expressSwagger(swaggerConfig);
+
 //app.use(cors());
 app.use(function(req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", '*');
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.setHeader("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
-
-
   next();
 });
 
@@ -35,6 +32,8 @@ app.use(express.urlencoded({
 }));
 
 app.options('*', cors());
+
+
 
 // Orientating all routes towards router
 app.use(router);
