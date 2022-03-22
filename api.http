@@ -1,0 +1,78 @@
+### Test route
+GET http://localhost:5050/hello
+
+
+# JOB
+### Pôle Emploi API jobs
+POST  http://localhost:5050/jobs/pe
+
+### Find all jobs
+GET http://localhost:5050/jobs
+
+### Add one job
+POST http://localhost:5050/jobs/save
+Content-Type: application/json
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImZlbGFuYUBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1OTU0MTcsImV4cCI6MTYyNzY4MTgxN30.flQRjZW3L0Sebc-EYCeU5fV28J12iU-us9lGPxuGCHI
+
+{
+     "title": "Developpeur Junior",
+     "description" : "travailler avec une super équipe",
+     "company" : "US",
+     "technology" : "React entre autres",
+     "locality" : "Mouais",
+     "contract" : "CDI",
+     "salary" : "+++",
+     "user_id" : 3
+}
+
+### Update one job
+PATCH http://localhost:5050/jobs/update/1
+Content-Type: application/json
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImZlbGFuYUBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1OTU0MTcsImV4cCI6MTYyNzY4MTgxN30.flQRjZW3L0Sebc-EYCeU5fV28J12iU-us9lGPxuGCHI
+
+{
+     "id": 1,
+     "title": "Junior avec plein d'expérience",
+     "description" : "café à volonté",
+     "company" : "ME & co",
+     "technology" : "React en force",
+     "locality" : "Mouais",
+     "contract" : "CDI",
+     "salary" : "très beaucoup",
+     "user_id" : 3
+}
+
+### Find one job and delete
+DELETE http://localhost:5050/jobs/delete/7
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImZlbGFuYUBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1OTU0MTcsImV4cCI6MTYyNzY4MTgxN30.flQRjZW3L0Sebc-EYCeU5fV28J12iU-us9lGPxuGCHI
+
+
+# USER
+### Add one user/ user register
+POST http://localhost:5050/users/registerUser
+Content-Type: application/json
+
+{
+     "firstname": "Arsène",
+     "lastname": "Tout Mignon",
+     "email": "Arsène@oclock.io",
+     "password": "Arsène"
+}
+
+### Find one user/ user login 
+POST  http://18.212.203.228:5050/users/loginUser
+Content-type: application/json
+
+{    
+     "email": "marie@oclock.io",
+     "password": "marieclaire"
+}
+
+### Find one user and delete
+DELETE http://localhost:5050/users/delete/8
+authorization: token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJFbWFpbCI6ImZlbGFuYUBvY2xvY2suaW8iLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mjc1OTU0MTcsImV4cCI6MTYyNzY4MTgxN30.flQRjZW3L0Sebc-EYCeU5fV28J12iU-us9lGPxuGCHI
+
+
+# DISCORD
+### Discord Bot commands and events
+POST http://localhost:5050/discord

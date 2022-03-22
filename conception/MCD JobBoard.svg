@@ -1,0 +1,59 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="294" height="170" view_box="0 0 294 170"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Thu, 15 Jul 2021 07:39:46</desc>
+
+<rect id="frame" x="0" y="0" width="294" height="170" fill="#ffffbf" stroke="none" stroke-width="0"/>
+
+<!-- Association CREATE -->
+<line x1="44" y1="85" x2="143" y2="85" stroke="#66c2a5" stroke-width="2"/>
+<text x="84" y="102.0" fill="#d53e4f" font-family="Verdana" font-size="12">0,N</text>
+<line x1="246" y1="85" x2="143" y2="85" stroke="#66c2a5" stroke-width="2"/>
+<text x="181" y="102.0" fill="#d53e4f" font-family="Verdana" font-size="12">1,1</text>
+<g id="association-CREATE">
+	<path d="M 161 60 a 14 14 90 0 1 14 14 V 85 h -64 V 74 a 14 14 90 0 1 14 -14" fill="#abdda4" stroke="#abdda4" stroke-width="0"/>
+	<path d="M 175 85.0 v 11 a 14 14 90 0 1 -14 14 H 125 a 14 14 90 0 1 -14 -14 V 85.0 H 64" fill="#e6f598" stroke="#e6f598" stroke-width="0"/>
+	<rect x="111" y="60" width="64" height="50" fill="none" rx="14" stroke="#66c2a5" stroke-width="2"/>
+	<line x1="111" y1="85" x2="175" y2="85" stroke="#66c2a5" stroke-width="1"/>
+	<text x="118" y="77.7" fill="#000000" font-family="Verdana" font-size="12">CREATE</text>
+</g>
+
+<!-- Entity Job -->
+<g id="entity-Job">
+	<g id="frame-Job">
+		<rect x="207" y="9" width="78" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="207" y="34.0" width="78" height="127" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="207" y="9" width="78" height="152" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="207" y1="34" x2="285" y2="34" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="235" y="26.7" fill="#000000" font-family="Verdana" font-size="12">Job</text>
+	<text x="212" y="51.7" fill="#000000" font-family="Verdana" font-size="12">title</text>
+	<line x1="212" y1="54" x2="236" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="212" y="68.7" fill="#000000" font-family="Verdana" font-size="12">description</text>
+	<text x="212" y="85.8" fill="#000000" font-family="Verdana" font-size="12">company</text>
+	<text x="212" y="102.8" fill="#000000" font-family="Verdana" font-size="12">technology</text>
+	<text x="212" y="119.8" fill="#000000" font-family="Verdana" font-size="12">locality</text>
+	<text x="212" y="136.8" fill="#000000" font-family="Verdana" font-size="12">contract</text>
+	<text x="212" y="153.8" fill="#000000" font-family="Verdana" font-size="12">salary</text>
+</g>
+
+<!-- Entity User -->
+<g id="entity-User">
+	<g id="frame-User">
+		<rect x="9" y="26" width="70" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="9" y="51.0" width="70" height="93" fill="#fee08b" stroke="#fee08b" stroke-width="0"/>
+		<rect x="9" y="26" width="70" height="118" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="9" y1="51" x2="79" y2="51" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="30" y="43.7" fill="#000000" font-family="Verdana" font-size="12">User</text>
+	<text x="14" y="68.7" fill="#000000" font-family="Verdana" font-size="12">firstName</text>
+	<line x1="14" y1="71" x2="74" y2="71" stroke="#000000" stroke-width="1"/>
+	<text x="14" y="85.8" fill="#000000" font-family="Verdana" font-size="12">lastName</text>
+	<text x="14" y="102.8" fill="#000000" font-family="Verdana" font-size="12">email</text>
+	<text x="14" y="119.8" fill="#000000" font-family="Verdana" font-size="12">password</text>
+	<text x="14" y="136.8" fill="#000000" font-family="Verdana" font-size="12">role</text>
+</g>
+</svg>
