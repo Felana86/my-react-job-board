@@ -15,5 +15,5 @@ const rootReactElement = (
 );
 // The DOM target (where the structure should come to life in the DOM)
 const target = document.getElementById('root');
-//React rendering trigger (virtual) => DOM (web page)
+// React rendering trigger (virtual) => DOM (web page)
 render(rootReactElement, target);
