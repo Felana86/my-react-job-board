@@ -10,9 +10,15 @@ const app = express();
 
 const PORT = process.env.PORT || 1234;
 
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
+app.post("/post", (req, res) => {
+  console.log("Connected to React");
+  res.redirect("/");
+})
 
 // API documentation with node.js package express-swagger-generator 
 /*const expressSwagger = require('express-swagger-generator')(app);
@@ -28,18 +34,15 @@ app.use(function(req, res, next) {
 });
 
 // All data sent as json in POST methods 
-//app.use(express.json());
+/*app.use(express.json());
 // All, but POST route requesting access token to Pôle Emploi API, which is set to be in urlencoded
-//app.use(express.urlencoded({
-    //extended: true,
-//}));
+app.use(express.urlencoded({
+    extended: true,
+}));*/
 
 app.options('*', cors());
 
-app.post("/post", (req, res) => {
-  console.log("Connected to React");
-  res.redirect("/");
-})
+
 
 // Orientating all routes towards router
 app.use(router);
