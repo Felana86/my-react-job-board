@@ -5,3 +5,4 @@ BEGIN;
 DROP TABLE "user", job;
 
 COMMIT;
+
