@@ -1,5 +1,6 @@
 {
   "name": "projectjobboard",
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config config/webpack.dev.js",
     "build": "cross-env NODE_ENV=production webpack --config config/webpack.prod.js",
@@ -10,7 +11,8 @@
     "save-deps": "node updateDeps.js"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
     "@babel/eslint-parser": "^7.13.10",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
