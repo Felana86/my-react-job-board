@@ -54,7 +54,7 @@
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "core-js": "^3.9.1",
     "dayjs": "^1.10.6",
     "dotenv-webpack": "^7.0.3",
